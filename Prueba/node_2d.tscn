@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://brjdy44u1rq54"]
+
+[ext_resource type="Texture2D" uid="uid://dr5acenruxwi6" path="res://Sin título.png" id="1_7w1ui"]
+[ext_resource type="PackedScene" uid="uid://dhjwbhr23u1k3" path="res://character_body_2d.tscn" id="2_tvei7"]
+[ext_resource type="PackedScene" uid="uid://nh2hqe3mwa0c" path="res://Arbol.tscn" id="3_4ia4b"]
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+
+[node name="SinTítulo" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-9, 30)
+texture = ExtResource("1_7w1ui")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_tvei7")]
+position = Vector2(22, -16)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_4ia4b")]
+position = Vector2(-119, 49)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("3_4ia4b")]
+position = Vector2(-44, -88)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("3_4ia4b")]
+position = Vector2(104, 83)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("3_4ia4b")]
+position = Vector2(121, -70)
+
+[node name="Camera2D" type="Camera2D" parent="."]

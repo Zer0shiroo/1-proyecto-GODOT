@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhjwbhr23u1k3"]
+
+[ext_resource type="Texture2D" uid="uid://cqcrosk4thteu" path="res://The Knight, The Hollow Knight, the Pale King, Vessel corpses - atlas0 #34006.png" id="1_3bx64"]
+
+[sub_resource type="GDScript" id="GDScript_i2tk2"]
+script/source = "extends CharacterBody2D
+
+
+func _ready():
+	$AnimationPlayer.play(\"andar\")
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	var direccion =Input.get_vector(\"ui_left\",\"ui_right\",\"ui_up\",\"ui_down\")
+	velocity = direccion * 200
+	move_and_slide()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rdn6"]
+size = Vector2(24, 58)
+
+[sub_resource type="Animation" id="Animation_7h8lw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.122173]
+}
+
+[sub_resource type="Animation" id="Animation_latde"]
+resource_name = "andar"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.122173, -0.122173]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dp543"]
+_data = {
+"RESET": SubResource("Animation_7h8lw"),
+"andar": SubResource("Animation_latde")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = SubResource("GDScript_i2tk2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.194104, -5.9051)
+rotation = -0.122173
+scale = Vector2(0.447739, 0.462835)
+texture = ExtResource("1_3bx64")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_1rdn6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dp543")
+}
